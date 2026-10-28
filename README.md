@@ -30,6 +30,19 @@
             color: var(--text-white);
             line-height: 1.8;
             padding-bottom: 50px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Canvas Background */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Modal Overlay */
@@ -117,8 +130,10 @@
             padding-top: 15px;
         }
 
-        /* Container & Navigation */
+        /* Container & Content */
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
@@ -205,6 +220,12 @@
             background: var(--bg-hover);
         }
 
+        .accordion-icon {
+            font-size: 1rem;
+            color: var(--primary-orange);
+            transition: transform 0.3s ease;
+        }
+
         .accordion-body {
             max-height: 0;
             overflow: hidden;
@@ -233,12 +254,11 @@
         }
 
         li::before {
-            content: "•";
-            color: var(--primary-orange);
-            font-size: 1.5rem;
+            content: "✨";
+            font-size: 0.9rem;
             position: absolute;
             right: 0;
-            top: -5px;
+            top: 2px;
         }
 
         /* Quiz Styling */
@@ -303,6 +323,9 @@
 </head>
 <body>
 
+    <!-- Animated Canvas -->
+    <canvas id="bgCanvas"></canvas>
+
     <!-- Popup Modal -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal-card">
@@ -327,7 +350,7 @@
 
         <!-- Top Navigation -->
         <div class="nav-tabs">
-            <button class="nav-btn active" onclick="switchTab('tab1', this)">📌 المحاور الشاملة</button>
+            <button class="nav-btn active" onclick="switchTab('tab1', this)">✨ المحاور الشاملة</button>
             <button class="nav-btn" onclick="switchTab('tab2', this)">📖 الأدلة والمصادر</button>
             <button class="nav-btn" onclick="switchTab('tab3', this)">📝 الاختبار التفاعلي</button>
         </div>
@@ -338,17 +361,17 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>1. مفهوم الانحراف الفكري ومظاهره</span>
-                    <span>▼</span>
+                    <span class="accordion-icon">✦</span>
                 </button>
                 <div class="accordion-body">
                     <p style="margin-bottom: 12px;"><strong>تعريف الانحراف الفكري:</strong> وهو الميل عن منهج الحق والعدول عن الصراط المستقيم، واعتناق أفكار غير سوية تؤدي إلى هدم معالم الدين والخلل بالأمن الثقافي.</p>
                     <ul>
-                        <li>اعتناق المذاهب والأفكار المنافية لثوابت الشريعة الإسلامية كالعلمانية والقومية.</li>
-                        <li>انتقاص أحكام الإسلام والتكذيب أو الاعتقاد بعدم وجوب الحكم بما أنزل الله.</li>
-                        <li>الطعن في صحابة رسول الله ﷺ وانتقاص منهج السلف الصالح.</li>
-                        <li>التشكيك في مقومات الحضارة الإسلامية المترسخة والتهوين منها.</li>
-                        <li>الفهم الخاطئ لبعض أركان ومفاهيم العقيدة كالقضاء والقدر والجماعة والولاء والبراء.</li>
-                        <li>التشدد والغلو في الدين أو التفريط والجفاء عن سنن الوسطية.</li>
+                        <li>اعتناق المذاهب والأفكار المنافية لثوابت الشريعة الإسلامية كالعلمانية والقومية.[span_0](start_span)[span_0](end_span)</li>
+                        <li>انتقاص أحكام الإسلام والتكذيب أو الاعتقاد بعدم وجوب الحكم بما أنزل الله.[span_1](start_span)[span_1](end_span)</li>
+                        <li>الطعن في صحابة رسول الله ﷺ وانتقاص منهج السلف الصالح.[span_2](start_span)[span_2](end_span)</li>
+                        <li>التشكيك في مقومات الحضارة الإسلامية المترسخة والتهوين منها.[span_3](start_span)[span_3](end_span)</li>
+                        <li>الفهم الخاطئ لبعض أركان ومفاهيم العقيدة كالقضاء والقدر والجماعة والولاء والبراء.[span_4](start_span)[span_4](end_span)</li>
+                        <li>التشدد والغلو في الدين أو التفريط والجفاء عن سنن الوسطية.[span_5](start_span)[span_5](end_span)</li>
                     </ul>
                 </div>
             </div>
@@ -356,7 +379,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>2. أسباب ومسببات الانحراف الفكري</span>
-                    <span>▼</span>
+                    <span class="accordion-icon">✦</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
@@ -371,12 +394,12 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>3. الحصانة الفكرية والأمن الثقافي</span>
-                    <span>▼</span>
+                    <span class="accordion-icon">✦</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
-                        <li><strong>نهي النبي ﷺ عن الغلو:</strong> موقف النبي ﷺ مع النفر الثلاثة الذين حاولوا التشدد بالصيام الدائم وقيام الليل واعتزال النساء، مؤكداً الاعتدال: «فمن رغب عن سنتي فليس مني».</li>
-                        <li><strong>بناء الحصانة المبكرة:</strong> إحاطة الشباب بالمعالم العامة للدين وتعميق عقيدتهم للوقاية من الشبهات قبل الانفتاح على الأفكار الأخرى.</li>
+                        <li><strong>نهي النبي ﷺ عن الغلو:</strong> موقف النبي ﷺ مع النفر الثلاثة الذين حاولوا التشدد بالصيام الدائم وقيام الليل واعتزال النساء، مؤكداً الاعتدال: «فمن رغب عن سنتي فليس مني».[span_6](start_span)[span_6](end_span)</li>
+                        <li><strong>بناء الحصانة المبكرة:</strong> إحاطة الشباب بالمعالم العامة للدين وتعميق عقيدتهم للوقاية من الشبهات قبل الانفتاح على الأفكار الأخرى.[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)</li>
                     </ul>
                 </div>
             </div>
@@ -384,13 +407,13 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>4. موقف الشريعة من العلوم والابتكار</span>
-                    <span>▼</span>
+                    <span class="accordion-icon">✦</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
-                        <li><strong>موقف النبي ﷺ مع صحيفة التوراة:</strong> تذكير عمر بن الخطاب رضي الله عنه بطلب الهداية التامة من كتاب الله وسنة نبيه المصطفى ﷺ.</li>
-                        <li><strong>تشجيع العلم والابتكار:</strong> الإسلام يحث على طلب العلوم النافعة والاستفادة من تجارب الأمم بما ينفع المجتمع.</li>
-                        <li><strong>الأدلة الشرعية:</strong> قوله تعالى: ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114]، وقوله ﷺ: «الحكمة ضالة المؤمن، فحيث وجدها فهو أحق بها».</li>
+                        <li><strong>موقف النبي ﷺ مع صحيفة التوراة:</strong> تذكير عمر بن الخطاب رضي الله عنه بطلب الهداية التامة من كتاب الله وسنة نبيه المصطفى ﷺ.[span_9](start_span)[span_9](end_span)</li>
+                        <li><strong>تشجيع العلم والابتكار:</strong> الإسلام يحث على طلب العلوم النافعة والاستفادة من تجارب الأمم بما ينفع المجتمع.[span_10](start_span)[span_10](end_span)</li>
+                        <li><strong>الأدلة الشرعية:</strong> قوله تعالى: ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114]، وقوله ﷺ: «الحكمة ضالة المؤمن، فحيث وجدها فهو أحق بها».[span_11](start_span)[span_11](end_span)</li>
                     </ul>
                 </div>
             </div>
@@ -403,12 +426,12 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>📜 الأدلة الشرعية من القرآن الكريم</span>
-                    <span>▼</span>
+                    <span class="accordion-icon">✦</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
                         <li>قوله تعالى: ﴿اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ﴾ [الفاتحة: 6] - دعاء دائم بالهداية والوسطية.</li>
-                        <li>قوله تعالى: ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114] - الحث على الاستزادة من العلم النافع.</li>
+                        <li>قوله تعالى: ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114] - الحث على الاستزادة من العلم النافع.[span_12](start_span)[span_12](end_span)</li>
                         <li>قوله تعالى: ﴿يَا أَهْلَ الْكِتابِ لا تَغْلُوا فِي دِينِكُمْ﴾ [النساء: 171] - النهي الصريح عن الغلو والتشدد.</li>
                     </ul>
                 </div>
@@ -417,24 +440,24 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>💬 حديث نبوي شريف في نبذ الغلو</span>
-                    <span>▼</span>
+                    <span class="accordion-icon">✦</span>
                 </button>
                 <div class="accordion-body">
-                    <p style="margin-bottom: 10px;">عن أنس بن مالك رضي الله عنه أن نفراً من أصحاب النبي ﷺ سألوا عن عمله في السر، فقال بعضهم: لا أتزوج النساء، وقال بعضهم: لا آكل اللحم، وقال بعضهم: لا أنام على فراش، فحمد الله وأثنى عليه وقال:</p>
-                    <p style="color: var(--accent-yellow); font-weight: 700;">«ما بال أقوام قالوا كذا وكذا؟ لكني أصلي وأنام، وأصوم وأفطر، وأتزوج النساء، فمن رغب عن سنتي فليس مني» [صحيح البخاري ومسلم].</p>
+                    <p style="margin-bottom: 10px;">عن أنس بن مالك رضي الله عنه أن نفراً من أصحاب النبي ﷺ سألوا عن عمله في السر، فقال بعضهم: لا أتزوج النساء، وقال بعضهم: لا آكل اللحم، وقال بعضهم: لا أنام على فراش، فحمد الله وأثنى عليه وقال:[span_13](start_span)[span_13](end_span)</p>
+                    <p style="color: var(--accent-yellow); font-weight: 700;">«ما بال أقوام قالوا كذا وكذا؟ لكني أصلي وأنام، وأصوم وأفطر، وأتزوج النساء، فمن رغب عن سنتي فليس مني» [صحيح البخاري ومسلم].[span_14](start_span)[span_14](end_span)</p>
                 </div>
             </div>
 
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>📚 المراجع والمصادر العلمية</span>
-                    <span>▼</span>
+                    <span class="accordion-icon">✦</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
-                        <li><strong>القرآن الكريم والتفاسير المعتمدة.</strong></li>
-                        <li><strong>صحيح البخاري وصحيح مسلم:</strong> أبواب الاعتصام بالكتاب والسنة والترغيب في العلم.</li>
-                        <li><strong>أبحاث ومطبوعات بناء المجتمع الإسلامي:</strong> دراسات الوقاية من الغلو والانحراف الفكري.</li>
+                        <li><strong>القرآن الكريم والتفاسير المعتمدة.</strong>[span_15](start_span)[span_15](end_span)</li>
+                        <li><strong>صحيح البخاري وصحيح مسلم:</strong> أبواب الاعتصام بالكتاب والسنة والترغيب في العلم.[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span)</li>
+                        <li><strong>أبحاث ومطبوعات بناء المجتمع الإسلامي:</strong> دراسات الوقاية من الغلو والانحراف الفكري.[span_18](start_span)[span_18](end_span)[span_19](start_span)[span_19](end_span)[span_20](start_span)[span_20](end_span)</li>
                     </ul>
                 </div>
             </div>
@@ -480,10 +503,12 @@
     </div>
 
     <script>
+        // Modal Controls
         function closeModal() {
             document.getElementById('welcomeModal').style.display = 'none';
         }
 
+        // Navigation Tabs
         function switchTab(tabId, btn) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -492,18 +517,22 @@
             btn.classList.add('active');
         }
 
+        // Accordion Controls
         function toggleAccordion(headerBtn) {
             const body = headerBtn.nextElementSibling;
-            const icon = headerBtn.querySelector('span:last-child');
+            const icon = headerBtn.querySelector('.accordion-icon');
             
             body.classList.toggle('open');
             if (body.classList.contains('open')) {
-                icon.innerText = '▲';
+                icon.style.transform = 'rotate(180deg)';
+                icon.style.color = '#ffb300';
             } else {
-                icon.innerText = '▼';
+                icon.style.transform = 'rotate(0deg)';
+                icon.style.color = '#f57c00';
             }
         }
 
+        // Quiz Handling
         function checkAnswer(btn, isCorrect) {
             const parent = btn.parentElement;
             const buttons = parent.querySelectorAll('.option-btn');
@@ -519,6 +548,60 @@
                 btn.classList.add('wrong');
             }
         }
+
+        // Transparent Floating Yellow/Orange Icons Animation
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const icons = ['✨', '💡', '🧠', '📖', '🛡️'];
+        const particles = [];
+
+        for (let i = 0; i < 22; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 14 + 12,
+                symbol: icons[Math.floor(Math.random() * icons.length)],
+                speedY: -(Math.random() * 0.4 + 0.1),
+                speedX: (Math.random() - 0.5) * 0.2,
+                opacity: Math.random() * 0.25 + 0.08 // الشفافية ناعمة جداً
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.y += p.speedY;
+                p.x += p.speedX;
+
+                if (p.y < -30) {
+                    p.y = canvas.height + 30;
+                    p.x = Math.random() * canvas.width;
+                }
+
+                ctx.save();
+                ctx.globalAlpha = p.opacity;
+                // إعطاء المسحة اللونية الصفراء والبرتقالية
+                ctx.fillStyle = '#ffb300';
+                ctx.shadowColor = '#f57c00';
+                ctx.shadowBlur = 6;
+                ctx.font = `${p.size}px Tajawal, sans-serif`;
+                ctx.fillText(p.symbol, p.x, p.y);
+                ctx.restore();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     </script>
 </body>
 </html>
