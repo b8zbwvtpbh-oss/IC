@@ -34,8 +34,8 @@
             overflow-x: hidden;
         }
 
-        /* Animated Canvas Background */
-        #bgCanvas {
+        /* Fixed Background Icons Layer */
+        .bg-icons-layer {
             position: fixed;
             top: 0;
             left: 0;
@@ -43,6 +43,21 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: var(--accent-yellow);
+            opacity: 0.12; /* شفافة وغير مشتتة */
+            animation: floatAnim 10s infinite ease-in-out alternate;
+            font-size: 2rem;
+            user-select: none;
+        }
+
+        @keyframes floatAnim {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(15deg); }
         }
 
         /* Modal Overlay */
@@ -220,10 +235,11 @@
             background: var(--bg-hover);
         }
 
+        /* الأيقونة المنسدلة باللون الذهبي والبرتقالي بدل السهم */
         .accordion-icon {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--primary-orange);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
         .accordion-body {
@@ -323,8 +339,15 @@
 </head>
 <body>
 
-    <!-- Animated Canvas -->
-    <canvas id="bgCanvas"></canvas>
+    <!-- Transparent Floating Yellow/Orange Icons in Background -->
+    <div class="bg-icons-layer">
+        <div class="floating-icon" style="top: 10%; left: 10%; animation-duration: 8s;">💡</div>
+        <div class="floating-icon" style="top: 20%; right: 15%; animation-duration: 11s;">🧠</div>
+        <div class="floating-icon" style="top: 45%; left: 8%; animation-duration: 9s;">✨</div>
+        <div class="floating-icon" style="top: 60%; right: 12%; animation-duration: 12s;">💡</div>
+        <div class="floating-icon" style="top: 80%; left: 15%; animation-duration: 10s;">✨</div>
+        <div class="floating-icon" style="top: 85%; right: 20%; animation-duration: 7s;">🧠</div>
+    </div>
 
     <!-- Popup Modal -->
     <div class="modal-overlay" id="welcomeModal">
@@ -361,7 +384,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>1. مفهوم الانحراف الفكري ومظاهره</span>
-                    <span class="accordion-icon">✦</span>
+                    <span class="accordion-icon">✨</span>
                 </button>
                 <div class="accordion-body">
                     <p style="margin-bottom: 12px;"><strong>تعريف الانحراف الفكري:</strong> وهو الميل عن منهج الحق والعدول عن الصراط المستقيم، واعتناق أفكار غير سوية تؤدي إلى هدم معالم الدين والخلل بالأمن الثقافي.</p>
@@ -379,7 +402,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>2. أسباب ومسببات الانحراف الفكري</span>
-                    <span class="accordion-icon">✦</span>
+                    <span class="accordion-icon">✨</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
@@ -394,7 +417,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>3. الحصانة الفكرية والأمن الثقافي</span>
-                    <span class="accordion-icon">✦</span>
+                    <span class="accordion-icon">✨</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
@@ -407,7 +430,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>4. موقف الشريعة من العلوم والابتكار</span>
-                    <span class="accordion-icon">✦</span>
+                    <span class="accordion-icon">✨</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
@@ -426,7 +449,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>📜 الأدلة الشرعية من القرآن الكريم</span>
-                    <span class="accordion-icon">✦</span>
+                    <span class="accordion-icon">✨</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
@@ -440,7 +463,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>💬 حديث نبوي شريف في نبذ الغلو</span>
-                    <span class="accordion-icon">✦</span>
+                    <span class="accordion-icon">✨</span>
                 </button>
                 <div class="accordion-body">
                     <p style="margin-bottom: 10px;">عن أنس بن مالك رضي الله عنه أن نفراً من أصحاب النبي ﷺ سألوا عن عمله في السر، فقال بعضهم: لا أتزوج النساء، وقال بعضهم: لا آكل اللحم، وقال بعضهم: لا أنام على فراش، فحمد الله وأثنى عليه وقال:[span_13](start_span)[span_13](end_span)</p>
@@ -451,7 +474,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
                     <span>📚 المراجع والمصادر العلمية</span>
-                    <span class="accordion-icon">✦</span>
+                    <span class="accordion-icon">✨</span>
                 </button>
                 <div class="accordion-body">
                     <ul>
@@ -503,12 +526,10 @@
     </div>
 
     <script>
-        // Modal Controls
         function closeModal() {
             document.getElementById('welcomeModal').style.display = 'none';
         }
 
-        // Navigation Tabs
         function switchTab(tabId, btn) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -517,22 +538,20 @@
             btn.classList.add('active');
         }
 
-        // Accordion Controls
         function toggleAccordion(headerBtn) {
             const body = headerBtn.nextElementSibling;
             const icon = headerBtn.querySelector('.accordion-icon');
             
             body.classList.toggle('open');
             if (body.classList.contains('open')) {
-                icon.style.transform = 'rotate(180deg)';
+                icon.style.transform = 'scale(1.3)';
                 icon.style.color = '#ffb300';
             } else {
-                icon.style.transform = 'rotate(0deg)';
+                icon.style.transform = 'scale(1)';
                 icon.style.color = '#f57c00';
             }
         }
 
-        // Quiz Handling
         function checkAnswer(btn, isCorrect) {
             const parent = btn.parentElement;
             const buttons = parent.querySelectorAll('.option-btn');
@@ -548,60 +567,6 @@
                 btn.classList.add('wrong');
             }
         }
-
-        // Transparent Floating Yellow/Orange Icons Animation
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        const icons = ['✨', '💡', '🧠', '📖', '🛡️'];
-        const particles = [];
-
-        for (let i = 0; i < 22; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 14 + 12,
-                symbol: icons[Math.floor(Math.random() * icons.length)],
-                speedY: -(Math.random() * 0.4 + 0.1),
-                speedX: (Math.random() - 0.5) * 0.2,
-                opacity: Math.random() * 0.25 + 0.08 // الشفافية ناعمة جداً
-            });
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                p.y += p.speedY;
-                p.x += p.speedX;
-
-                if (p.y < -30) {
-                    p.y = canvas.height + 30;
-                    p.x = Math.random() * canvas.width;
-                }
-
-                ctx.save();
-                ctx.globalAlpha = p.opacity;
-                // إعطاء المسحة اللونية الصفراء والبرتقالية
-                ctx.fillStyle = '#ffb300';
-                ctx.shadowColor = '#f57c00';
-                ctx.shadowBlur = 6;
-                ctx.font = `${p.size}px Tajawal, sans-serif`;
-                ctx.fillText(p.symbol, p.x, p.y);
-                ctx.restore();
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
     </script>
 </body>
 </html>
