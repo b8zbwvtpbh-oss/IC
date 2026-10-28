@@ -28,7 +28,7 @@
         body {
             background-color: var(--bg-main);
             color: var(--text-white);
-            line-height: 1.7;
+            line-height: 1.8;
             padding-bottom: 50px;
         }
 
@@ -39,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.88);
             backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
@@ -56,7 +56,7 @@
             max-width: 440px;
             padding: 24px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             text-align: center;
         }
 
@@ -179,6 +179,44 @@
             top: -5px;
         }
 
+        /* Accordion / Dropdown Sources */
+        .accordion-btn {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--primary-orange);
+            color: var(--accent-yellow);
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+            margin-top: 30px;
+        }
+
+        .accordion-btn:hover {
+            background: rgba(245, 124, 0, 0.15);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            padding: 0 20px;
+        }
+
+        .accordion-content.open {
+            padding: 20px;
+            max-height: 500px;
+        }
+
         /* Quiz Styling */
         .quiz-question {
             background: var(--bg-hover);
@@ -228,13 +266,9 @@
         }
 
         .sources-card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 20px;
             text-align: center;
-            border: 1px solid var(--border-color);
-            margin-top: 40px;
-            font-size: 0.9rem;
+            margin-top: 30px;
+            font-size: 0.95rem;
             color: var(--text-muted);
         }
 
@@ -265,85 +299,122 @@
     <div class="container">
         <header>
             <h1>الانحراف الفكري بالشريعة الإسلامية</h1>
-            <p>دراسة ومفاهيم مستنبطة من المنهج الشرعي</p>
+            <p>دراسة شرعية تحليلية شاملة للمفهوم والأسباب والأحكام</p>
         </header>
 
         <!-- Section 1 -->
         <div class="section-card">
-            <div class="section-title">📌 المفهوم والمظاهر (صفحة 72)</div>
-            <p style="margin-bottom: 10px;"><strong>تعريف الانحراف الفكري:</strong> وهو أصل كل انحراف، حيث يعتنق الشباب أفكاراً غير سوية تهدم معالم الدين.</p>
+            <div class="section-title">📌 المفهوم الشامل والمظاهر</div>
+            <p style="margin-bottom: 10px;"><strong>تعريف الانحراف الفكري:</strong> وهو الميل عن السوائية والعدول عن الصراط المستقيم وضوابط الدين القويم، مما يؤدي إلى تبني أفكار خاطئة تهدم معالم الدين وتخل بأمن المجتمع.</p>
             <ul>
-                <li>اعتناق المذاهب الهدامة كالعلمانية والقومية.[span_0](start_span)[span_0](end_span)</li>
-                <li>انتقاص أحكام الإسلام واعتقاد عدم وجوب الحكم بما أنزل الله.[span_1](start_span)[span_1](end_span)</li>
-                <li>انتقاص الصحابة والسلف الصالح والطعن فيهم.[span_2](start_span)[span_2](end_span)</li>
-                <li>التشكيك في الحضارة الإسلامية ومقوماتها.[span_3](start_span)[span_3](end_span)</li>
-                <li>الفهم الخاطئ لبعض المفاهيم الشرعية كالقضاء والقدر.[span_4](start_span)[span_4](end_span)</li>
-                <li>التشدد والغلو في الأخذ بتعاليم الدين وأحكامه.[span_5](start_span)[span_5](end_span)</li>
+                <li>اعتناق المذاهب والأفكار الهدامة المنافية لثوابت الشريعة كالقومية أو العلمانية.[span_0](start_span)[span_0](end_span)</li>
+                <li>انتقاص أحكام الشريعة الإسلامية واعتقاد عدم وجوب التحتيم والعمل بما أنزل الله.[span_1](start_span)[span_1](end_span)</li>
+                <li>الطعن في صحابة رسول الله ﷺ والتشكيك في منهج السلف الصالح والمؤسسات الفقهية الراسخة.[span_2](start_span)[span_2](end_span)</li>
+                <li>التشكيك في مقومات الحضارة الإسلامية المترسخة والتهوين من قيمها.[span_3](start_span)[span_3](end_span)</li>
+                <li>الفهم الخاطئ والتأويل العليل لبعض مفاهيم وأركان العقيدة كالقضاء والقدر والجماعة والولاء والبراء.[span_4](start_span)[span_4](end_span)</li>
+                <li>التشدد والغلو في الدين أو الإفراط والتفريط والخروج عن منهج الوسطية والاعتدال.[span_5](start_span)[span_5](end_span)</li>
             </ul>
         </div>
 
         <!-- Section 2 -->
         <div class="section-card">
-            <div class="section-title">📌 الأمن الثقافي والحصانة (صفحة 84)</div>
+            <div class="section-title">📌 الأسباب العميقة للانحراف الفكري</div>
             <ul>
-                <li><strong>موقف النبي ﷺ من الغلو:</strong> رد النبي ﷺ على النفر الثلاثة الذين أعلنوا التشدد (أحدهم يصوم ولا يفطر، والآخر يصلي الليل دائماً، والثالث يعتزل النساء)، موضحاً أن سنته تقوم على الاعتدال والوسطية: "فمن رغب عن سنتي فليس مني".[span_6](start_span)[span_6](end_span)</li>
-                <li><strong>الحصانة الفكرية:</strong> ضرورة بناء حصانة للشباب توعيهم بالمعالم العامة للدين قبل التعمق في الثقافات والأفكار غير الإسلامية لتعصمهم من الانزلاق.[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)</li>
+                <li><strong>الجهل بمقاصد الشريعة:</strong> الفهم السطحي للنصوص، والأخذ بالمتشابهات وترك المحكمات بمعزل عن فهم العلماء الراسخين.</li>
+                <li><strong>عزلة المرجعية الشرعية:</strong> انقطاع الشباب عن العلماء الربانيين واستقاء الفتاوى والأفكار من منصات التواصل ومصادر مشبوهة.</li>
+                <li><strong>الفراغ الفكري والروحي:</strong> غياب التحصين الذاتي وغياب التفكير الناقد يجعل الفرد صيداً سهلاً للتأثيرات الفكرية الخارجية.</li>
+                <li><strong>الشبهات الإعلامية والغزو الثقافي:</strong> التأثر بالدعايات المضللة والتشكيك الثقافي بغير علم ولا هدى.</li>
             </ul>
         </div>
 
         <!-- Section 3 -->
         <div class="section-card">
-            <div class="section-title">📌 موقف الشريعة من العلوم والابتكار (صفحة 85)</div>
+            <div class="section-title">📌 الأمن الثقافي والحصانة الفكرية</div>
             <ul>
-                <li><strong>قصة صحيفة التوراة:</strong> موقف النبي ﷺ حين رأى مع عمر بن الخطاب رضي الله عنه صحيفة من التوراة، فبين له أن الكفاية والكمال فيما جاء به القرآن والسنة.[span_9](start_span)[span_9](end_span)</li>
-                <li><strong>الانفتاح النافع:</strong> الإسلام لا يمنع من الابتكار والتجديد والاستفادة من العلوم النافعة لدى الثقافات الأخرى.[span_10](start_span)[span_10](end_span)</li>
-                <li><strong>الدليل من القرآن:</strong> قوله تعالى: ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114].[span_11](start_span)[span_11](end_span)</li>
-                <li><strong>الدليل من السنة:</strong> قوله ﷺ: "الحكمة ضالة المؤمن، فحيث وجدها فهو أحق بها".[span_12](start_span)[span_12](end_span)</li>
+                <li><strong>رد النبي ﷺ على التشدد:</strong> أنكر النبي ﷺ على النفر الثلاثة الذين أعلنوا الغلو (أحدهم يصوم ولا يفطر، والثاني يقوم الليل دائماً، والثالث يعتزل النساء)، مؤكداً منهج الاعتدال: «فمن رغب عن سنتي فليس مني».[span_6](start_span)[span_6](end_span)</li>
+                <li><strong>الحصانة الفكرية المبكرة:</strong> وجوب تحصين النشء والشباب بتعلم معالم الدين العامة والقواعد الكلية للإسلام قبل الانفتاح على الثقافات والأفكار الخارجية لضمان أمن العقول.[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)</li>
+            </ul>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section-card">
+            <div class="section-title">📌 موقف الشريعة من العلوم والابتكار النافع</div>
+            <ul>
+                <li><strong>قصة صحيفة التوراة:</strong> موقف النبي ﷺ حين رأى مع عمر بن الخطاب رضي الله عنه صحيفة من التوراة، موضحاً كفاية وكمال القرآن والسنة الشريفة في هداية البشرية.[span_9](start_span)[span_9](end_span)</li>
+                <li><strong>الانفتاح المعرفي النافع:</strong> الشريعة لا ترفض العلوم النافعة أو التطور والابتكار الثقافي البناء بل تحث عليه.[span_10](start_span)[span_10](end_span)</li>
+                <li><strong>الدليل القرآني:</strong> قوله تعالى: ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114].[span_11](start_span)[span_11](end_span)</li>
+                <li><strong>الدليل من السنة:</strong> قوله ﷺ: «الحكمة ضالة المؤمن، فحيث وجدها فهو أحق بها».[span_12](start_span)[span_12](end_span)</li>
             </ul>
         </div>
 
         <!-- Quiz Section -->
         <div class="section-card">
-            <div class="section-title">📝 أسئلة تفاعلية استيعابية</div>
+            <div class="section-title">📝 أسئلة تفاعلية وتقييم فهم</div>
             
             <div class="quiz-question">
-                <p>1. أي مما يلي يُعد من مظاهر الانحراف الفكري المذكورة في ص 72؟</p>
+                <p>1. ما هو المعيار الشرعي الأساسي لمعرفة الانحراف الفكري؟</p>
                 <div class="options-grid">
-                    <button class="option-btn" onclick="checkAnswer(this, false)">تعلم العلوم الحديثة والنافعة</button>
-                    <button class="option-btn" onclick="checkAnswer(this, true)">انتقاص الصحابة والسلف الصالح والتشكيك بالحضارة</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false)">الأخذ بالوسطية والاعتدال</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">مخالفة الآراء الشخصية للمجتمع</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">الخروج والعدول عن منهج الوسطية والاعتدال وما جاء به الشرع الحنيف</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">التعلم من التجارب والعلوم النافعة</button>
                 </div>
             </div>
 
             <div class="quiz-question">
-                <p>2. كيف كان موقف النبي ﷺ مع النفر الثلاثة الذين أرادوا التشدد؟ (ص 84)</p>
+                <p>2. كيف عالج السنة النبوية الشريفة غلو النفر الثلاثة الذين حاولوا التشديد على أنفسهم؟</p>
                 <div class="options-grid">
-                    <button class="option-btn" onclick="checkAnswer(this, true)">أنكر عليهم وبين أن سنته هي الاعتدال والوسطية</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false)">وافقهم على أفعالهم وشجعهم</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false)">طلب منهم الاعتزال التام عن الناس</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">أقر النبي ﷺ منهج الوسطية والاعتدال وقال: «فمن رغب عن سنتي فليس مني»</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">شجعهم على مواصلة الانقطاع والشدة</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">أمرهم بالتوقف عن العبادة نهائياً</button>
                 </div>
             </div>
 
             <div class="quiz-question">
-                <p>3. الآية التي استُدل بها على طلب العلم النافع والزيادة فيه هي: (ص 85)</p>
+                <p>3. الشريعة الإسلامية تحث على التعلم والانفتاح على العلوم النافعة والدليل قوله تعالى:</p>
                 <div class="options-grid">
                     <button class="option-btn" onclick="checkAnswer(this, false)">﴿وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا﴾</button>
                     <button class="option-btn" onclick="checkAnswer(this, true)">﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false)">﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">﴿إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ﴾</button>
                 </div>
             </div>
         </div>
 
-        <!-- Sources Card -->
+        <!-- Dropdown Sources Button -->
+        <button class="accordion-btn" onclick="toggleSources()">
+            <span>📚 المراجع والمصادر العلمية المعتمدة</span>
+            <span id="accordionIcon">▼</span>
+        </button>
+
+        <div class="accordion-content" id="sourcesDropdown">
+            <ul>
+                <li><strong>القرآن الكريم</strong> وكتب التفسير المعتمدة.[span_13](start_span)[span_13](end_span)</li>
+                <li><strong>صحيح البخاري وصحيح مسلم:</strong> أحاديث النهي عن الغلو واجتناب الشبهات والترغيب في طلب العلم.[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span)</li>
+                <li><strong>دراسات الفقه والسياسة الشرعية:</strong> أسباب الانحراف الفكري وعلاجه الشامل في الإسلام (دراسة شرعية تحليلية).</li>
+                <li><strong>أبحاث الأمن الفكري:</strong> المنهج النبوي في معالجة الانحراف الفكري وحماية الشباب (مجلة الجامعة العراقية).</li>
+                <li><strong>بحوث ومؤلفات علماء المسلمين:</strong> كتب الاقتصاد والفكر وبناء المجتمع الإسلامي.[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span)[span_18](start_span)[span_18](end_span)</li>
+            </ul>
+        </div>
+
         <div class="sources-card">
-            <p><strong>المصادر والمراجع:</strong> المحتوى والأدلة مستخرجة ومطابقة للمنهج الدراسي (الصفحات: 72، 84، 85)[span_13](start_span)[span_13](end_span)[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span)</p>
-            <p style="margin-top: 8px;">إعداد وتطوير: <strong>لمار السعود</strong></p>
+            <p>تم الإعداد والتطوير بواسطة: <strong>لمار السعود</strong></p>
         </div>
     </div>
 
     <script>
         function closeModal() {
             document.getElementById('welcomeModal').style.display = 'none';
+        }
+
+        function toggleSources() {
+            const content = document.getElementById('sourcesDropdown');
+            const icon = document.getElementById('accordionIcon');
+            content.classList.toggle('open');
+            
+            if (content.classList.contains('open')) {
+                icon.innerText = '▲';
+            } else {
+                icon.innerText = '▼';
+            }
         }
 
         function checkAnswer(btn, isCorrect) {
