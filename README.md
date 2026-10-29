@@ -171,7 +171,6 @@
             </p>
         </div>
 
-        <!-- Interactive Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="glass-card rounded-2xl p-8 border border-slate-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
                 <h4 class="text-xl font-bold mb-3 text-slate-900">1. الغلو والتطرف (الإفراط)</h4>
@@ -335,20 +334,20 @@
         </div>
     </section>
 
-    <!-- Section 4: Media & Video Lecture (تم تعديل الرابط هنا ليعمل بامتياز) -->
+    <!-- Section 4: Media & Video Lecture -->
     <section id="media" class="py-16 lg:py-24 bg-slate-100 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
                 <h2 class="text-sm font-bold text-emerald-800 uppercase tracking-wider">المرئيات والدروس</h2>
                 <h3 class="text-3xl font-extrabold text-slate-900">محاضرة قيمة: الغزو الفكري</h3>
                 <p class="text-slate-600 text-sm sm:text-base">
-                    للشيخ العلامة عبد العزيز بن عبد الله بن باز (رحمه الله)
+                    للشيخ العلامة عبد العزيز بن عبد الله بن باز (رحمه الله تعالى)
                 </p>
                 <div class="w-20 h-1 bg-emerald-700 mx-auto rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <!-- Responsive YouTube Embed Player -->
+                <!-- Video Player Container -->
                 <div class="lg:col-span-7">
                     <div class="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-black aspect-video">
                         <iframe 
